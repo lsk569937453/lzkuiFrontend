@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "antd": "^3.9.3",
+    "babel-runtime": "^6.26.0",
     "dva": "^2.4.0",
+    "mockjs": "^1.0.1-beta3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0"
   },

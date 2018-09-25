@@ -6,6 +6,8 @@ import ZKchildren from "./routes/ZKchildren.js";
 
 import Header from "./routes/Header.js";
 
+import MainLayout from "./routes/MainLayout.js";
+
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
@@ -15,6 +17,7 @@ function RouterConfig({ history }) {
         </Switch>
         <Route path="/ZKchildren" component={ZKchildren} />
         <Route path="/header" component={Header} />
+        <Route path="/mainLayout" component={MainLayout} />
         </div>
     
     </Router>

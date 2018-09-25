@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'dva';
 import styles from './IndexPage.css';
 import Header from '../components/Header'
+import MainLayout from '../components/MainLayout';
 
 function IndexPage() {
   return (
     <div className={styles.normal}>
     <Header/>
+    <MainLayout/>
       <h1 className={styles.title}>Yay! Welcome to dva!</h1>
       <div className={styles.welcome} />
       <ul className={styles.list}>

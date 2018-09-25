@@ -8,15 +8,16 @@ function Header(props){
   const {dispatch}=props;
   function handleClick() {
 
-    const {num} = props.Header;
+    const {num} = props.Header; 
 
   
-    dispatch({ type: 'Header/save',param:props.Header.num })
+    dispatch({ type: 'Header/getChildren',path:props.Header.path })
+    dispatch({ type: 'Header/getNodeData',path:props.Header.path })
     
   }
   return (
     <h1 onClick={handleClick} className={styles.normal}>
-      0{props.Header.num}
+      0{props.Header.path}
     </h1>
   );
 }

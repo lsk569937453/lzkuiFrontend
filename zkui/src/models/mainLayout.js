@@ -1,21 +1,25 @@
-import *as MainLayoutService from "../services/mainLayout"
+import *as MainLayoutService from '../services/mainLayout';
 export default {
-  namespace: 'Header',
-  state: {path:root},
+  namespace: 'MainLayout',
+  state: {
+    data1: "st",
+    data2: "st2"
+  },
   reducers: {
     path(state, action) { //这里的state是当前总的state，这里的action包含了上面传递的参数和type
-      const newPath=action.path+"dsa";
-      return { ...state, path:newPath }; 
+      const newPath = action.path + "dsa";
+      return { ...state, num: newPath };
 
-    
-  }},
+
+    }
+  },
   effects: { //这里是做异步处理的
- 
-    *getChildren({path},{call,put,select})
-    {
-      console.log(path)
-      
-      const json = yield call(MainLayoutService.fetchPath, {path})
+
+    *getChildren({ param }, { call, put, select }) {
+      const num = yield select(state => state.num);
+
+  
+      const json = yield call(MainLayoutService.fetchPath, )
       if (json.data.code) {
         localStorage.setItem('htoken', json.data.token)
         localStorage.setItem('hlogintime', json.data.loginTime)
@@ -25,20 +29,12 @@ export default {
         })
       }
 
-      yield put({
-        type:'path',
-        path:path
-        
-      })
   
-    },
 
-    *getNodeData({path},{call,put,select})
-      {
 
-      }
-   
- 
+    }
+
+
   },
   subscriptions: {},
 };

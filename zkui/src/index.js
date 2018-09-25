@@ -5,13 +5,19 @@ import Header from './models/Header'
 // 1. Initialize
 const app = dva({
     initialState: { 
-   Header:{ num: 1 }
+   Header:{ num: 1 },
+   mainLayout:{
+     data1:"st1",
+     data2:'st23'
+   }
   }
 }
   
 );
 
 app.model(require("./models/Header").default);
+
+app.model(require("./models/mainLayout").default);
 
 // 2. Plugins
 // app.use({});
