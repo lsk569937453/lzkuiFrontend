@@ -1,16 +1,5 @@
 {
-
-
-     "extraBabelPlugins": [
+  "extraBabelPlugins": [
       ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
-    ],
-     "proxy": {
-    "/zk": {
-      "target": "http://localhost:9090/",
-      "changeOrigin": true
- 
-    }
-  }
-
-
+  ]
 }

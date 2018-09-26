@@ -1,18 +1,9 @@
-let mock = {}
-let fs = require('fs');
-let join = require('path').join;
+// 是否禁用代理
+const noProxy = process.env.NO_PROXY === 'true';
 
-let result=[];
-function finder(path) {
-let files=fs.readdirSync(path);
-files.forEach((val,index) => {
-let fPath=join(path,val);
-let stats=fs.statSync(fPath);
-if(stats.isDirectory()) finder(fPath);
-if(stats.isFile()) Object.assign(mock, require(fPath))
-});
+// 代码中会兼容本地 service mock 以及部署站点的静态数据
+const proxy = {
+  'POST /zk/getChildren': ["dsfrootV2","zookeeper","titan_uat","testtset","dsfroot","jobs","a-test-xk","services"],
+};
 
-}
-finder(join(__dirname + '/mock'));
-
-module.exports = mock;
+export default noProxy ? {} : proxy;

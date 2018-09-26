@@ -1,16 +1,17 @@
 import request from '../utils/request';
+
 // import { PAGE_SIZE } from '../constants';
 
-export function fetchPath({ path }) {
+export function fetchPath({path}) {
 
-  const parm={path:path};
-  return request(`/zk/getChildren`,{
-    method:'POST',
-    body:JSON.stringify(parm),
+  const parm = {path: path};
+  return request(`/zk/getChildren`, {
+    method: 'POST',
+    body: JSON.stringify(parm),
     headers: {
-      　　　　 'Accept': 'application/json',
-      　　　　 'Content-Type': 'application/json',
-    　　　　 },
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
   });
 }
 

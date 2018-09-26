@@ -1,20 +1,16 @@
 import React from 'react';
-import { connect } from 'dva';
+import {connect} from 'dva';
 
-import { Tree,Icon } from 'antd';
+import {Tree, Icon} from 'antd';
 
 const TreeNode = Tree.TreeNode;
 
 
-
-function Left(props){
-  const {dispatch}=props;
-
+function Left(props) {
+  const {dispatch} = props;
 
 
-
-
-  function onLoadData(treeNode){
+  function onLoadData(treeNode) {
 
     return new Promise((resolve) => {
       if (treeNode.props.children) {
@@ -25,48 +21,46 @@ function Left(props){
       //   dispatch({ type: 'Left/getChildren',path:treeNode.props.title})
       //   resolve();
       // }, 1000);
-      dispatch({ type: 'Left/getChildren',path:treeNode.props.dataRef.key,title:treeNode.props.title})
+      dispatch({type: 'Left/getChildren', path: treeNode.props.dataRef.key, title: treeNode.props.title})
       resolve();
     });
-    
+
   }
 
-  function renderTreeNodes(data){
+  function renderTreeNodes(data) {
     console.log(data)
     return data.map((item) => {
       if (item.children) {
         return (
-          <TreeNode icon={<Icon type="folder"/>} title={item.title} key={item.key} dataRef={item} >
+          <TreeNode icon={<Icon type="folder"/>} title={item.title} key={item.key} dataRef={item}>
             {renderTreeNodes(item.children)}
           </TreeNode>
         )
       }
-      return <TreeNode icon={<Icon type="folder"/>} {...item} dataRef={item} />;
+      return <TreeNode icon={<Icon type="folder"/>} {...item} dataRef={item}/>;
     });
   }
+
   return (
     // <h1 onClick={handleClick} className={styles.normal}>
     //   0{props.Left.path}
     // </h1>
-    <div style={{overflow:"auto"}}>
-       <Tree loadData={onLoadData}  showIcon>
+      <Tree loadData={onLoadData} showIcon>
         {renderTreeNodes(props.Left.path)}
       </Tree>
-        </div>
   );
 }
 
 // 监听属性，建立组件和数据的映射关系
 function mapStateToProps(state) {
-  const {data}=state.Left;
+  const {data} = state.Left;
   console.log(data);
 
   return {
-    Left:state.Left
-  
-  };
-  }
+    Left: state.Left
 
+  };
+}
 
 
 export default connect(mapStateToProps)(Left);
