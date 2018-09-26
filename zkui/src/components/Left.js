@@ -2,12 +2,22 @@ import React from 'react';
 import {connect} from 'dva';
 
 import {Tree, Icon} from 'antd';
+import stylesLeft from './Left.css';
 
 const TreeNode = Tree.TreeNode;
 
 
 function Left(props) {
   const {dispatch} = props;
+
+  function handleOnSelect(selectedKeys, info)
+  {
+    if(selectedKeys=='/')
+    return;
+    dispatch({type: 'MainLayout/getPathData', path: selectedKeys})
+
+
+  }
 
 
   function onLoadData(treeNode) {
@@ -37,7 +47,7 @@ function Left(props) {
           </TreeNode>
         )
       }
-      return <TreeNode icon={<Icon type="folder"/>} {...item} dataRef={item}/>;
+      return <TreeNode icon={<Icon type="folder"/>} {...item} dataRef={item} />;
     });
   }
 
@@ -45,7 +55,7 @@ function Left(props) {
     // <h1 onClick={handleClick} className={styles.normal}>
     //   0{props.Left.path}
     // </h1>
-      <Tree loadData={onLoadData} showIcon>
+      <Tree loadData={onLoadData} showIcon onSelect={handleOnSelect} className={stylesLeft.treeBackground}>
         {renderTreeNodes(props.Left.path)}
       </Tree>
   );

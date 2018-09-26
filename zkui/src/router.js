@@ -4,7 +4,7 @@ import IndexPage from './routes/IndexPage';
 
 import ZKchildren from "./routes/ZKchildren.js";
 
-import Left from "./routes/Left.js";
+import Left from "././routes/Left.js";
 
 import MainLayout from "./routes/MainLayout.js";
 

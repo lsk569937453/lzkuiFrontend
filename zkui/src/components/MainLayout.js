@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tabs } from 'antd';
+import { Tabs,Table } from 'antd';
 import { connect } from 'dva';
 
 const TabPane = Tabs.TabPane;
@@ -9,7 +9,23 @@ function MainLayout(props) {
 
  // const {dispatch}=props;
 
+  const columns = [{
+  title: 'nodekey',
+  dataIndex: 'nodekey',
+  key: '0' ,
+
+  width: '50%',
+},{
+  title: 'value',
+  dataIndex: 'value',
+  key: '1' ,
+
+  width: '50%',
+}];
+
   function handleChange() {
+
+
 
   //  const {num} = props.Header;
 
@@ -22,10 +38,18 @@ function MainLayout(props) {
 
   return (
     <Tabs defaultActiveKey="1" onChange={handleChange}>
-    <TabPane tab="元数据" key="1">{props.MainLayout.data1}</TabPane>
-    <TabPane tab="内容" key="2">{props.MainLayout.data2}</TabPane>
+    <TabPane tab="内容" key="1">
+   
+    <Table
+        columns={columns}
+        dataSource={props.MainLayout.statData}>
+      </Table>
+    
+    </TabPane>
+    <TabPane tab="元数据" key="2">{props.MainLayout.nodeData}</TabPane>
   
   </Tabs>
+  
   );
 }
 

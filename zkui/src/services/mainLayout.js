@@ -1,5 +1,4 @@
 import request from '../utils/request';
-
 // import { PAGE_SIZE } from '../constants';
 
 export function fetchPath({path}) {
@@ -15,9 +14,16 @@ export function fetchPath({path}) {
   });
 }
 
-export function remove(id) {
-  return request(`/api/users/${id}`, {
-    method: 'DELETE',
+export function fetchPathData({path}) {
+
+  const parm = {path: path};
+  return request(`/zk/getPathData`, {
+    method: 'POST',
+    body: JSON.stringify(parm),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
   });
 }
 

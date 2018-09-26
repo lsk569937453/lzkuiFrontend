@@ -8,8 +8,15 @@ const app = dva({
     initialState: { 
    Left:{ path: [{ title: 'root', key: '/',father:'/' }] },
    MainLayout:{
-     data1:"st1",
-     data2:'st23'
+    nodeData:"",
+    
+    statData:[{
+      key: '0',
+      nodekey: 'key',
+      value: 'value'
+    
+    }
+    ]
    }
   }
 }

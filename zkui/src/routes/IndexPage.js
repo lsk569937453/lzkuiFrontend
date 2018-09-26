@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'dva';
 import styles from './IndexPage.css';
+import stylesLeft from '../components/Left.css';
 import Left from '../components/Left'
 import MainLayout from '../components/MainLayout';
 
@@ -26,7 +27,7 @@ function IndexPage() {
 
       </Header>
       <Layout>
-        <Sider width={200}  style={{height: 500, overflow:"auto",background: '#fff'}}>
+        <Sider width={200}  style={{height: 500, overflow:"auto"}} className={stylesLeft.normal}>
           <Left/>
 
         </Sider>
@@ -36,9 +37,10 @@ function IndexPage() {
             <Breadcrumb.Item>List</Breadcrumb.Item>
             <Breadcrumb.Item>App</Breadcrumb.Item>
           </Breadcrumb>
-          <Content style={{background: '#fff', padding: 24, margin: 0, minHeight: 280}}>
+          {/* <Content style={{background: '#fff', padding: 24, margin: 0, minHeight: 280}}>
             Content
-          </Content>
+          </Content> */}
+          <MainLayout/>
         </Layout>
       </Layout>
     </Layout>
