@@ -1,21 +1,47 @@
 import React from 'react';
 import { connect } from 'dva';
 import styles from './IndexPage.css';
-import Header from '../components/Header'
+import Left from '../components/Left'
 import MainLayout from '../components/MainLayout';
+
+
+import { Layout, Menu, Breadcrumb } from 'antd';
+
+const { SubMenu } = Menu;
+const { Header, Content, Sider } = Layout;
 
 function IndexPage() {
   return (
-    <div className={styles.normal}>
-    <Header/>
-    <MainLayout/>
-      <h1 className={styles.title}>Yay! Welcome to dva!</h1>
-      <div className={styles.welcome} />
-      <ul className={styles.list}>
-        <li>To get started, edit <code>src/index.js</code> and save to reload.</li>
-        <li><a href="https://github.com/dvajs/dva-docs/blob/master/v1/en-us/getting-started.md">Getting Started</a></li>
-      </ul>
-    </div>
+    <Layout>
+    <Header className="header">
+      <div className="logo" />
+      <Menu
+        theme="dark"
+        mode="horizontal"
+        defaultSelectedKeys={['2']}
+        style={{ lineHeight: '64px' }}
+      >
+      
+      </Menu>
+
+    </Header>
+    <Layout>
+      <Sider width={200} style={{ background: '#fff' }}>
+      <Left/>
+        
+      </Sider>
+      <Layout style={{ padding: '0 24px 24px' }}>
+        <Breadcrumb style={{ margin: '16px 0' }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>List</Breadcrumb.Item>
+          <Breadcrumb.Item>App</Breadcrumb.Item>
+        </Breadcrumb>
+        <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
+          Content
+        </Content>
+      </Layout>
+    </Layout>
+  </Layout>
   );
 }
 

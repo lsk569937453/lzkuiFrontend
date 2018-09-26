@@ -4,7 +4,7 @@ import IndexPage from './routes/IndexPage';
 
 import ZKchildren from "./routes/ZKchildren.js";
 
-import Header from "./routes/Header.js";
+import Left from "./routes/Left.js";
 
 import MainLayout from "./routes/MainLayout.js";
 
@@ -16,7 +16,7 @@ function RouterConfig({ history }) {
           <Route path="/" exact component={IndexPage} />
         </Switch>
         <Route path="/ZKchildren" component={ZKchildren} />
-        <Route path="/header" component={Header} />
+        <Route path="/Left" component={Left} />
         <Route path="/mainLayout" component={MainLayout} />
         </div>
     

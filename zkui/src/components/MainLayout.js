@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './MainLayout.css';
 import { Tabs } from 'antd';
 import { connect } from 'dva';
 
@@ -8,7 +7,7 @@ const TabPane = Tabs.TabPane;
 
 function MainLayout(props) {
 
-  const {dispatch}=props;
+ // const {dispatch}=props;
 
   function handleChange() {
 

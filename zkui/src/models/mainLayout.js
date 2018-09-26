@@ -16,8 +16,7 @@ export default {
   effects: { //这里是做异步处理的
 
     *getChildren({ param }, { call, put, select }) {
-      const num = yield select(state => state.num);
-
+  
   
       const json = yield call(MainLayoutService.fetchPath, )
       if (json.data.code) {

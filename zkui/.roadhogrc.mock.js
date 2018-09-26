@@ -1,11 +1,18 @@
-const fs=require('fs');
-const path=require('path');
-const mockPath=path.join(__dirname+'/mock');
+let mock = {}
+let fs = require('fs');
+let join = require('path').join;
 
-const mock={};
-fs.readdirSync(mockPath).forEach(file=>{
-
-    Object.assign(mock,require('./mock/'+file));
+let result=[];
+function finder(path) {
+let files=fs.readdirSync(path);
+files.forEach((val,index) => {
+let fPath=join(path,val);
+let stats=fs.statSync(fPath);
+if(stats.isDirectory()) finder(fPath);
+if(stats.isFile()) Object.assign(mock, require(fPath))
 });
 
-module.exports=mock;
+}
+finder(join(__dirname + '/mock'));
+
+module.exports = mock;

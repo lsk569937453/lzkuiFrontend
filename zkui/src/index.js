@@ -1,12 +1,13 @@
+
 import dva from 'dva';
 import './index.css';
-import Header from './models/Header'
+import Left from './models/Left'
 
 // 1. Initialize
 const app = dva({
     initialState: { 
-   Header:{ num: 1 },
-   mainLayout:{
+   Left:{ path: [{ title: 'root', key: '/',father:'/' }] },
+   MainLayout:{
      data1:"st1",
      data2:'st23'
    }
@@ -15,7 +16,7 @@ const app = dva({
   
 );
 
-app.model(require("./models/Header").default);
+app.model(require("./models/Left").default);
 
 app.model(require("./models/mainLayout").default);
 

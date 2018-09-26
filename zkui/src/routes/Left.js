@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'dva';
-import styles from './Header.css';
+import styles from './Left.css';
 
-function Header() {
+function Left() {
   return (
     <div className={styles.normal}>
       Route Component: Header
@@ -14,4 +14,4 @@ function mapStateToProps() {
   return {};
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Left);
