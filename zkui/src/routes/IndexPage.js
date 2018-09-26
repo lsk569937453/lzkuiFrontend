@@ -4,6 +4,7 @@ import styles from './IndexPage.css';
 import stylesLeft from '../components/Left.css';
 import Left from '../components/Left'
 import MainLayout from '../components/MainLayout';
+import AddNodeModal from '../components/AddNodeModal';
 
 
 import {Layout, Menu, Breadcrumb} from 'antd';
@@ -11,17 +12,30 @@ import {Layout, Menu, Breadcrumb} from 'antd';
 const {SubMenu} = Menu;
 const {Header, Content,Sider} = Layout;
 
-function IndexPage() {
+function IndexPage(props) {
+  const {dispatch} = props;
+
+  function handleAddnode()
+  {
+    dispatch({type: 'AddNodeModal/show'})
+
+  }
   return (
     <Layout>
+       <AddNodeModal />
+         <br />
       <Header className="header">
-        <div className="logo"/>
+        <div className={styles.logo}/>
+       
         <Menu
           theme="dark"
           mode="horizontal"
-          defaultSelectedKeys={['2']}
+         
           style={{lineHeight: '64px'}}
         >
+        <Menu.Item key="1" onClick={handleAddnode}>Add Node</Menu.Item>
+        <Menu.Item key="2">Add Property</Menu.Item>
+        <Menu.Item key="3">Delete</Menu.Item>
 
         </Menu>
 
