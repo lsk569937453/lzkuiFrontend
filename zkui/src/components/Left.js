@@ -15,7 +15,7 @@ function Left(props) {
   {
     if(selectedKeys==='/')
     return;
-    dispatch({type: 'MainLayout/getPathData', path: selectedKeys})
+    dispatch({type: 'MainLayout/getPathData', path: selectedKeys[0]})
 
 
   }
