@@ -1,6 +1,7 @@
 
 import dva from 'dva';
 import './index.css';
+import './components/Left.css';
 import Left from './models/Left'
 
 // 1. Initialize

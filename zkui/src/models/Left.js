@@ -4,7 +4,7 @@ import { Children } from "react";
 let leftUtils = {
   findFather(oldPath, newPath) {
     for (var i = 0; i < oldPath.length; i++) {
-      if(oldPath[i].key==newPath[0].father)
+      if(oldPath[i].key===newPath[0].father)
       {
         oldPath[i].children=newPath;
         return;
@@ -56,7 +56,7 @@ export default {
 
 
       let todos = json.data.map(function (item, index) {
-        if (path == '/')
+        if (path === '/')
           return { title: item, key: path + item, father: path }
         else
           //每一条事项

@@ -42,11 +42,12 @@ function MainLayout(props) {
    
     <Table
         columns={columns}
+        pagination={false}
         dataSource={props.MainLayout.statData}>
       </Table>
     
     </TabPane>
-    <TabPane tab="元数据" key="2">{props.MainLayout.nodeData}</TabPane>
+    <TabPane tab="元数据" key="2">{props.MainLayout.nodeData} </TabPane>
   
   </Tabs>
   

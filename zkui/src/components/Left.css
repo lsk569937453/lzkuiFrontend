@@ -2,7 +2,12 @@
 .normal {
     background-color: #222d32;
 }
-.treeBackground
+.treeBackground 
 {
     background-color: #1a3d4d; 
+}
+:global(.ant-layout .ant-tree li .ant-tree-node-content-wrapper){
+    padding: 3px 5px 3px 0;
+    color: rgba(245, 247, 246, 0.65);
+
 }

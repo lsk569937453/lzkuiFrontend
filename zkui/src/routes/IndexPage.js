@@ -9,7 +9,7 @@ import MainLayout from '../components/MainLayout';
 import {Layout, Menu, Breadcrumb} from 'antd';
 
 const {SubMenu} = Menu;
-const {Header, Content, Sider} = Layout;
+const {Header, Content,Sider} = Layout;
 
 function IndexPage() {
   return (
@@ -27,7 +27,7 @@ function IndexPage() {
 
       </Header>
       <Layout>
-        <Sider width={200}  style={{height: 500, overflow:"auto"}} className={stylesLeft.normal}>
+        <Sider   style={{ overflow:"auto"}} className={stylesLeft.normal}>
           <Left/>
 
         </Sider>
@@ -41,6 +41,8 @@ function IndexPage() {
             Content
           </Content> */}
           <MainLayout/>
+      
+    
         </Layout>
       </Layout>
     </Layout>

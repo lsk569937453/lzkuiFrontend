@@ -11,7 +11,7 @@ let mainlayoutUtil =
 
     for (var item in srcData) {
 
-      if(item=='ctime'||item=='mtime')
+      if(item==='ctime'||item==='mtime')
       srcData[item]=mainlayoutUtil.formatTime(srcData[item]);
 
       newData.push({
@@ -77,10 +77,10 @@ export default {
 
       let nodedata = '';
       let statdata = '';
-      if (json.data.dataCode == 0) {
+      if (json.data.dataCode === 0) {
         nodedata = json.data.data
       }
-      if (json.data.statCode == 0)
+      if (json.data.statCode === 0)
         statdata = mainlayoutUtil.parseJsonToTabledata(json.data.stat);
 
       yield put({ //派发 action 让reducers 接收 存储 在model 里面 type 属性不需要加 Login/ 在组件中如果你dispatch派发action 需要加Login/
