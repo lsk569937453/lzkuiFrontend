@@ -1,43 +1,55 @@
 import React from 'react';
 import styles from './AddNodeModal.css';
-import { Modal, Button } from 'antd';
-import {connect} from 'dva';
+import { Modal, Button, Input, Radio ,Form} from 'antd';
+import { connect } from 'dva';
+
+const FormItem = Form.Item;
 
 
 function AddNodeModal(props) {
-  const {dispatch} = props;
-  function showModal(){
-   
-    dispatch({type: 'AddNodeModal/show'})
-    
+  const { dispatch } = props;
+  function showModal() {
+
+    dispatch({ type: 'AddNodeModal/show' })
+
   }
 
   function hideModal() {
-    
-    dispatch({type: 'AddNodeModal/hide'})
-    
+
+    dispatch({ type: 'AddNodeModal/hide' })
+
   }
 
   return (
     <div>
-    <Modal
-      title="Modal"
-      visible={props.AddNodeModal.visible}
-      onOk={hideModal}
-      onCancel={hideModal}
-      okText="确认"
-      cancelText="取消"
-    >
-      <p>Bla bla ...</p>
-      <p>Bla bla ...</p>
-      <p>Bla bla ...</p>
-    </Modal>
-  </div>
+
+
+      <Modal
+        title="addNode"
+        visible={props.AddNodeModal.visible}
+        onOk={hideModal}
+        onCancel={hideModal}
+        okText="confirm"
+        cancelText="cancel"
+      >
+        <Form layout="vertical">
+            <FormItem label="Title">
+            
+            </FormItem>
+            <FormItem label="Description">
+              
+            </FormItem>
+            <FormItem className="collection-create-form_last-form-item">
+              
+            </FormItem>
+          </Form>
+      </Modal>
+    </div>
   );
 }
 
 function mapStateToProps(state) {
-  const {data} = state.AddNodeModal;
+  const { data } = state.AddNodeModal;
   console.log(data);
 
   return {

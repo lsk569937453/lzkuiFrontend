@@ -80,6 +80,36 @@ export default {
 
 
     },
+    *getChildrenNew({ payload }, { call, put, select }) {
+      console.log(payload)
+      const { resolve } = payload;
+      const path=payload.path;
+
+      const json = yield call(MainLayoutService.fetchPath, { path })
+
+
+
+
+      let todos = json.data.map(function (item, index) {
+        if (path === '/')
+          return { title: item, key: path + item, father: path }
+        else
+          //每一条事项
+          return { title: item, key: path + "/" + item, father: path };
+      })
+
+      !!resolve && resolve(todos);
+
+
+      // yield put({ //派发 action 让reducers 接收 存储 在model 里面 type 属性不需要加 Login/ 在组件中如果你dispatch派发action 需要加Login/
+      //   type: 'getPath',
+      //   path: todos
+      // })
+
+
+
+
+    },
 
     *getNodeData({ path }, { call, put, select }) {
 
