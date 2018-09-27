@@ -124,6 +124,15 @@ class Left extends React.Component {
         treeData:[...this.state.treeData]
       })
     });
+  };
+
+  handleOnSelect=(selectedKeys)=>
+  {
+    if(selectedKeys==='/')
+    return;
+    this.props.dispatch({type: 'MainLayout/getPathData', path: selectedKeys[0]})
+
+
   }
 
   renderTreeNodes = (data) => {
@@ -141,7 +150,7 @@ class Left extends React.Component {
 
   render() {
     return (
-      <Tree loadData={this.onLoadData} className={stylesLeft.treeBackground}>
+      <Tree loadData={this.onLoadData} className={stylesLeft.treeBackground} onSelect={this.handleOnSelect}>
         {this.renderTreeNodes(this.state.treeData)}
       </Tree>
     );
