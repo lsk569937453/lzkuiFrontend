@@ -38,7 +38,7 @@ function MainLayout(props) {
 
   return (
     <Tabs defaultActiveKey="1" onChange={handleChange}>
-    <TabPane tab="内容" key="1">
+    <TabPane tab="content" key="1">
    
     <Table
         columns={columns}
@@ -47,7 +47,7 @@ function MainLayout(props) {
       </Table>
     
     </TabPane>
-    <TabPane tab="元数据" key="2">{props.MainLayout.nodeData} </TabPane>
+    <TabPane tab="stat" key="2">{props.MainLayout.nodeData} </TabPane>
   
   </Tabs>
   
