@@ -6,8 +6,32 @@ import { connect } from 'dva';
 const FormItem = Form.Item;
 
 
-function AddNodeModal(props) {
-  const { dispatch } = props;
+  class FancySearchForm extends React.Component {
+   
+    render() {
+      const {  path, form } = this.props;
+      const { getFieldDecorator } = form;
+      return (
+      
+          <Form layout="vertical">
+          
+            <FormItem label={'the current  path is:'+this.props.path}>
+              {getFieldDecorator('description')(<Input type="textarea" />)}
+            </FormItem>
+          
+          </Form>
+      
+      );
+    }
+  }
+;
+const CollectionCreateForm = Form.create()(FancySearchForm);
+
+
+function AddNodeModal({ dispatch, path:srcPath,visible:visible})  {
+  
+  
+
   function showModal() {
 
     dispatch({ type: 'AddNodeModal/show' })
@@ -20,40 +44,37 @@ function AddNodeModal(props) {
 
   }
 
+
   return (
-    <div>
+    
 
 
       <Modal
         title="addNode"
-        visible={props.AddNodeModal.visible}
+        visible={visible}
         onOk={hideModal}
         onCancel={hideModal}
         okText="confirm"
         cancelText="cancel"
       >
-        <Form layout="vertical">
-            <FormItem label="Title">
-            
-            </FormItem>
-            <FormItem label="Description">
-              
-            </FormItem>
-            <FormItem className="collection-create-form_last-form-item">
-              
-            </FormItem>
-          </Form>
+        <CollectionCreateForm
+      
+          visible={visible}
+          onCancel={true}
+          path={srcPath}
+          
+        />
       </Modal>
-    </div>
+    
   );
 }
 
 function mapStateToProps(state) {
-  const { data } = state.AddNodeModal;
-  console.log(data);
+  const { path,visible } = state.AddNodeModal;
+  console.log(path);
 
   return {
-    AddNodeModal: state.AddNodeModal
+    path,visible
 
   };
 }
