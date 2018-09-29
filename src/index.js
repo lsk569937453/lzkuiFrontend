@@ -26,6 +26,10 @@ const app = dva({
 
 app.model(require("./models/Left").default);
 
+
+app.model(require("./models/NodeProperty").default);
+
+
 app.model(require("./models/addNodeModal").default);
 
 app.model(require("./models/mainLayout").default);

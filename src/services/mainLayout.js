@@ -26,6 +26,18 @@ export function fetchPathData({path}) {
     },
   });
 }
+export function savePathProperty({path}) {
+
+  const parm = {path: path};
+  return request(`/zk/savePathproperty`, {
+    method: 'POST',
+    body: JSON.stringify(parm),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
+}
 
 export function patch(id, values) {
   return request(`/api/users/${id}`, {
