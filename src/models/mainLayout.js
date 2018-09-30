@@ -1,6 +1,8 @@
 import *as MainLayoutService from '../services/mainLayout';
 import moment from 'moment'
 
+import { delay } from '../utils/request';
+
 let mainlayoutUtil =
 {
   parseJsonToTabledata(srcData) {
@@ -43,10 +45,11 @@ export default {
     nodeData: "st",
     statData: "",
     routes: [],
-    progress:{
-      show:true,
-      status:"active",
-      percent:20
+    showOther: false,
+    progress: {
+      show: true,
+      status: "active",
+      percent: 20
     }
 
 
@@ -55,20 +58,25 @@ export default {
     save(state, action) { //这里的state是当前总的state，这里的action包含了上面传递的参数和type
 
       const newPath = "";
-      return { ...state, nodeData: action.nodeData, statData: action.statData, routes: action.routes };
+      const progress = {
+        show: false
+      };
+
+      return { ...state, showOther: false, nodeData: action.nodeData, statData: action.statData, routes: action.routes, progress: progress };
 
 
     },
-    saveNodeData(state,action)
-   {
-     console.log(action);
-      return {...state,nodeData:action.nodeProperty}
-   },
-   sendAlert(state,action)
-   {
-     return {...state,progress:action.progress}
+    saveNodeData(state, action) {
+      console.log(action);
+      return { ...state, nodeData: action.nodeProperty }
+    },
+    sendAlert(state, action) {
+      return { ...state, progress: action.progress ,showOther:action.showOther}
 
-   }
+    },
+    setEditButtonHide(state, action) {
+      return { ...state, showOther: !state.showOther }
+    }
   },
   effects: { //这里是做异步处理的
 
@@ -99,13 +107,13 @@ export default {
         statdata = mainlayoutUtil.parseJsonToTabledata(json.data.stat);
 
       let pathArray = [];
-      let count=0;
+      let count = 0;
       if (typeof (path) !== 'undefined') {
-        pathArray = path.split('/').filter((item)=>{
-          return !(item==='');
+        pathArray = path.split('/').filter((item) => {
+          return !(item === '');
         }
         ).map((item) => {
-          count=count+2+'';
+          count = count + 2 + '';
           return { path: count, breadcrumbName: item }
 
         })
@@ -119,22 +127,49 @@ export default {
 
       })
     },
-    *saveNodePropertyTobackend({ nodeProperty }, { call, put, select })
-    {
+    *saveNodePropertyTobackend({ nodeProperty }, { call, put, select }) {
+
+      yield put(
+        {
+          type: 'sendAlert',
+          progress: {
+
+            show: true,
+            status: "active",
+            percent: 20
+
+          }
+        }
+      )
+
       const json = yield call(MainLayoutService.savePathProperty, { nodeProperty })
 
-      if(json.data.retcode===0)
-      {
+      if (json.data.retcode === 0) {
         yield put(
           {
-            type:'sendAlert',
-            progress:{
+            type: 'sendAlert',
+            progress: {
 
-              show:true,
-              status:"active",
-              percent:100
+              show: true,
+              status: "active",
+              percent: 100
 
             }
+          }
+        )
+        yield call(delay, 3000);
+
+        yield put(
+          {
+            type: 'sendAlert',
+            progress: {
+
+              show: false,
+              status: "active",
+              percent: 100
+
+            },
+            showOther:false
           }
         )
       }

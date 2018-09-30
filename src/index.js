@@ -17,7 +17,11 @@ const app = dva({
       value: 'value'
     
     }
-    ]
+    ],progress:{
+      show:false,
+      status:"active",
+      percent:20
+    },showOther:false
    }
   }
 }

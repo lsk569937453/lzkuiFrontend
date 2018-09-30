@@ -49,7 +49,7 @@ function MainLayout(props) {
       </Breadcrumb>
       <Tabs defaultActiveKey="2" onChange={handleChange} >
         <TabPane tab="Content" key="2">
-          <NodeProperty />
+          <NodeProperty nodeProperty={props.MainLayout.nodeData} progress={props.MainLayout.progress}/>
         </TabPane>
         <TabPane tab="Stat" key="1">
 
