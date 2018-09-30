@@ -38,6 +38,18 @@ export function savePathProperty({path}) {
     },
   });
 }
+export function deleteNode({path}) {
+
+  const parm = {path: path};
+  return request(`/zk/deleteNode`, {
+    method: 'POST',
+    body: JSON.stringify(parm),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
+}
 
 export function patch(id, values) {
   return request(`/api/users/${id}`, {

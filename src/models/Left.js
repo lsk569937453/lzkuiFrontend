@@ -1,5 +1,5 @@
 import *as MainLayoutService from "../services/mainLayout"
-import { Children } from "react";
+
 
 let leftUtils = {
   findFather(oldPath, newPath) {
@@ -48,7 +48,7 @@ export default {
   effects: { //这里是做异步处理的
 
     *getChildren({ path, title }, { call, put, select }) {
-      console.log(path)
+     
 
       const json = yield call(MainLayoutService.fetchPath, { path })
 
@@ -81,7 +81,7 @@ export default {
 
     },
     *getChildrenNew({ payload }, { call, put, select }) {
-      console.log(payload)
+    
       const { resolve } = payload;
       const path=payload.path;
 

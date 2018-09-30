@@ -70,8 +70,8 @@ function MainLayout(props) {
 
 // 监听属性，建立组件和数据的映射关系
 function mapStateToProps(state) {
-  const { data1 } = state.MainLayout;
-  console.log(data1);
+ 
+
 
   return {
     MainLayout: state.MainLayout

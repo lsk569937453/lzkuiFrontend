@@ -1,10 +1,9 @@
 import React from 'react';
 import styles from './NodeProperty.css';
-import { Skeleton, Switch, Card, Icon, Avatar, Badge, Layout, Menu, Button, Divider, Input, Progress } from 'antd';
+import {   Button, Divider, Input, Progress } from 'antd';
 import { connect } from 'dva';
 const { TextArea } = Input;
 
-const { Meta } = Card;
 class NodePropertyCard extends React.Component {
 
   constructor(props) {
@@ -31,13 +30,15 @@ class NodePropertyCard extends React.Component {
     this.props.dispatch({ type: 'MainLayout/saveNodePropertyTobackend', nodeProperty: this.props.nodeProperty })
   }
   handleCancel = () => {
-    this.setState({ showOther: false })
+    const{path}=this.props;
+    this.props.dispatch({type: 'MainLayout/getPathData',path:path})
+    this.props.dispatch({type: 'AddNodeModal/savePath', path:path})
+    this.props.dispatch({type: 'DeleteNodeModal/savePath', path:path})
   }
   handleChange = (e) => {
 
     this.props.dispatch({ type: 'MainLayout/saveNodeData', nodeProperty: e.target.value });
-    console.log(this)
-
+  
   }
 
 
@@ -88,13 +89,14 @@ function NodeProperty({ dispatch, nodeProperty: nodeProperty, progress: progress
   );
 }
 function mapStateToProps(state) {
-  let { nodeData, progress ,showOther} = state.MainLayout;
+  let { nodeData, progress ,showOther,path} = state.MainLayout;
 
 
   return {
     nodeProperty: nodeData,
     progress: progress,
-    showOther:showOther
+    showOther:showOther,
+    path:path
 
   };
 }

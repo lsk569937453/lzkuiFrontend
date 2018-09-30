@@ -128,10 +128,11 @@ class Left extends React.Component {
 
   handleOnSelect=(selectedKeys)=>
   {
-    if(selectedKeys[0]==='/'||selectedKeys.length==0)
+    if(selectedKeys[0]==='/'||selectedKeys.length===0)
     return;
     this.props.dispatch({type: 'MainLayout/getPathData', path: selectedKeys[0]})
     this.props.dispatch({type: 'AddNodeModal/savePath', path: selectedKeys[0]})
+    this.props.dispatch({type: 'DeleteNodeModal/savePath', path: selectedKeys[0]})
 
   }
 

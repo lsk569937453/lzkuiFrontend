@@ -5,12 +5,13 @@ import stylesLeft from '../components/Left.css';
 import Left from '../components/Left'
 import MainLayout from '../components/MainLayout';
 import AddNodeModal from '../components/AddNodeModal';
+import DeleteNodeModal from '../components/DeleteNodeModal'
 
 
-import {Layout, Menu, Breadcrumb} from 'antd';
+import {Layout, Menu} from 'antd';
 
-const {SubMenu} = Menu;
-const {Header, Content,Sider} = Layout;
+
+const {Header,Sider} = Layout;
 
 function IndexPage(props) {
   const {dispatch} = props;
@@ -20,9 +21,14 @@ function IndexPage(props) {
     dispatch({type: 'AddNodeModal/show'})
 
   }
+  function handleDeleteNode()
+  {
+    dispatch({type:'DeleteNodeModal/show'})
+  }
   return (
     <Layout>
        <AddNodeModal />
+       <DeleteNodeModal/>
          <br />
       <Header className="header">
         <div className={styles.logo}/>
@@ -36,7 +42,7 @@ function IndexPage(props) {
         <Menu.Item key="1" onClick={handleAddnode}>Add Node</Menu.Item>
       
       
-        <Menu.Item key="2">Delete</Menu.Item>
+        <Menu.Item key="2" onClick={handleDeleteNode}>Delete</Menu.Item>
 
         </Menu>
 

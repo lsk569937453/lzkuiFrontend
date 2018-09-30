@@ -2,7 +2,7 @@
 import dva from 'dva';
 import './index.css';
 import './components/Left.css';
-import Left from './models/Left'
+
 
 // 1. Initialize
 const app = dva({
@@ -29,6 +29,11 @@ const app = dva({
 );
 
 app.model(require("./models/Left").default);
+
+
+
+app.model(require("./models/DeleteNodeModal").default);
+
 
 
 app.model(require("./models/NodeProperty").default);

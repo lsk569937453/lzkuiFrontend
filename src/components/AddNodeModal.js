@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from './AddNodeModal.css';
-import { Modal, Button, Input, Radio ,Form} from 'antd';
+
+import { Modal, Input ,Form} from 'antd';
 import { connect } from 'dva';
 
 const FormItem = Form.Item;
@@ -9,7 +9,7 @@ const FormItem = Form.Item;
   class FancySearchForm extends React.Component {
    
     render() {
-      const {  path, form } = this.props;
+      const {   form } = this.props;
       const { getFieldDecorator } = form;
       return (
       
@@ -30,13 +30,7 @@ const CollectionCreateForm = Form.create()(FancySearchForm);
 
 function AddNodeModal({ dispatch, path:srcPath,visible:visible})  {
   
-  
 
-  function showModal() {
-
-    dispatch({ type: 'AddNodeModal/show' })
-
-  }
 
   function hideModal() {
 
@@ -71,7 +65,7 @@ function AddNodeModal({ dispatch, path:srcPath,visible:visible})  {
 
 function mapStateToProps(state) {
   const { path,visible } = state.AddNodeModal;
-  console.log(path);
+
 
   return {
     path,visible

@@ -57,17 +57,17 @@ export default {
   reducers: {
     save(state, action) { //这里的state是当前总的state，这里的action包含了上面传递的参数和type
 
-      const newPath = "";
+    
       const progress = {
         show: false
       };
 
-      return { ...state, showOther: false, nodeData: action.nodeData, statData: action.statData, routes: action.routes, progress: progress };
+      return { ...state, path:action.path,showOther: false, nodeData: action.nodeData, statData: action.statData, routes: action.routes, progress: progress };
 
 
     },
     saveNodeData(state, action) {
-      console.log(action);
+
       return { ...state, nodeData: action.nodeProperty }
     },
     sendAlert(state, action) {
@@ -95,7 +95,7 @@ export default {
     },
     *getPathData({ path }, { call, put, select }) {
 
-      console.log(path);
+    
       const json = yield call(MainLayoutService.fetchPathData, { path })
 
       let nodedata = '';
@@ -123,7 +123,7 @@ export default {
         type: 'save',
         nodeData: nodedata,
         statData: statdata,
-        routes: pathArray
+        routes: pathArray,path:path
 
       })
     },
