@@ -127,7 +127,7 @@ export default {
 
       })
     },
-    *saveNodePropertyTobackend({ nodeProperty }, { call, put, select }) {
+    *saveNodePropertyTobackend({ nodeProperty,path }, { call, put, select }) {
 
       yield put(
         {
@@ -141,8 +141,9 @@ export default {
           }
         }
       )
+      
 
-      const json = yield call(MainLayoutService.savePathProperty, { nodeProperty })
+      const json = yield call(MainLayoutService.savePathProperty, { nodeProperty,path })
 
       if (json.data.retcode === 0) {
         yield put(

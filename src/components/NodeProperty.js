@@ -26,8 +26,8 @@ class NodePropertyCard extends React.Component {
   }
   handleSave = () => {
   
-
-    this.props.dispatch({ type: 'MainLayout/saveNodePropertyTobackend', nodeProperty: this.props.nodeProperty })
+    console.log("testProperty"+ this.props.nodeProperty)
+    this.props.dispatch({ type: 'MainLayout/saveNodePropertyTobackend', nodeProperty: this.props.nodeProperty ,path:this.props.path})
   }
   handleCancel = () => {
     const{path}=this.props;

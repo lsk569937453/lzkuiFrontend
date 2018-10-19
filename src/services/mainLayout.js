@@ -26,9 +26,9 @@ export function fetchPathData({path}) {
     },
   });
 }
-export function savePathProperty({path}) {
+export function savePathProperty({nodeProperty,path}) {
 
-  const parm = {path: path};
+  const parm = {path: path,nodeProperty:nodeProperty};
   return request(`/zk/savePathproperty`, {
     method: 'POST',
     body: JSON.stringify(parm),
