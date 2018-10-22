@@ -13,4 +13,4 @@ const proxy = {
 
 
 export default (noProxy ? {
-} : delay(proxy, 1000));
+} : proxy);
