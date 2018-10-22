@@ -26,10 +26,13 @@ function IndexPage(props) {
     dispatch({type:'DeleteNodeModal/show'})
   }
   return (
-    <Layout>
+  
+    <Layout  className={styles.mainHeight}>
+      
        <AddNodeModal />
        <DeleteNodeModal/>
-         <br />
+      
+         
       <Header className="header">
         <div className={styles.logo}/>
        
@@ -63,6 +66,7 @@ function IndexPage(props) {
        
       </Layout>
     </Layout>
+  
   );
 }
 

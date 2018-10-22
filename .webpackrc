@@ -1,13 +1,6 @@
 {
   "extraBabelPlugins": [
       ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
-  ],
-  "proxy":{
-  "/": {
-    "target": "http://127.0.0.1:9090",   //代理后转发规则（api）会拼接在url后边
-    "changeOrigin": true,
-    "pathRewrite": { "^/" : "" }
-  }
-}
+  ]
 }
 
