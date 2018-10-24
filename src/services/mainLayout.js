@@ -50,6 +50,18 @@ export function deleteNode({path}) {
     },
   });
 }
+export function addNode({path,nodeValue}) {
+
+  const parm = {path: path,nodeValue:nodeValue};
+  return request(`/zk/addNode`, {
+    method: 'POST',
+    body: JSON.stringify(parm),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+  });
+}
 
 export function patch(id, values) {
   return request(`/api/users/${id}`, {

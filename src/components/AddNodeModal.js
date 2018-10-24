@@ -8,15 +8,18 @@ const FormItem = Form.Item;
 
   class FancySearchForm extends React.Component {
    
+
+
+
     render() {
       const {   form } = this.props;
       const { getFieldDecorator } = form;
       return (
       
-          <Form layout="vertical">
+          <Form layout="vertical" >
           
             <FormItem label={'the current  path is:'+this.props.path}>
-              {getFieldDecorator('description')(<Input type="textarea" />)}
+              {getFieldDecorator('description')(<Input type="textarea" onChange={this.props.inputChange}/>)}
             </FormItem>
           
           </Form>
@@ -28,7 +31,7 @@ const FormItem = Form.Item;
 const CollectionCreateForm = Form.create()(FancySearchForm);
 
 
-function AddNodeModal({ dispatch, path:srcPath,visible:visible})  {
+function AddNodeModal({ dispatch, path:srcPath,visible:visible,nodeValue:currentNodeValue})  {
   
 
 
@@ -37,7 +40,16 @@ function AddNodeModal({ dispatch, path:srcPath,visible:visible})  {
     dispatch({ type: 'AddNodeModal/hide' })
 
   }
-
+  function addNode()
+  {
+    dispatch({type:'AddNodeModal/addNode',path:srcPath,nodeValue:currentNodeValue})
+  }
+  function changeInput(event)
+  {
+  
+    dispatch({type:'AddNodeModal/setModelNodeValue',nodeValue:event.target.value})
+    
+  }
 
   return (
     
@@ -46,7 +58,7 @@ function AddNodeModal({ dispatch, path:srcPath,visible:visible})  {
       <Modal
         title="addNode"
         visible={visible}
-        onOk={hideModal}
+        onOk={addNode}
         onCancel={hideModal}
         okText="confirm"
         cancelText="cancel"
@@ -56,6 +68,7 @@ function AddNodeModal({ dispatch, path:srcPath,visible:visible})  {
           visible={visible}
           onCancel={true}
           path={srcPath}
+          inputChange={changeInput.bind(this)}
           
         />
       </Modal>
@@ -64,11 +77,11 @@ function AddNodeModal({ dispatch, path:srcPath,visible:visible})  {
 }
 
 function mapStateToProps(state) {
-  const { path,visible } = state.AddNodeModal;
+  const { path,visible ,nodeValue} = state.AddNodeModal;
 
 
   return {
-    path,visible
+    path,visible,nodeValue
 
   };
 }
